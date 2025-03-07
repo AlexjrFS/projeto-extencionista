@@ -1,7 +1,6 @@
 import { DataSource } from "typeorm";
 import "dotenv/config";
-import { User } from "../entities/User";
-
+import Alimentos from "./entities/Alimentos";
 export const AppDataSource = new DataSource({
   type: "mysql",
   host: process.env.DB_HOST,
@@ -11,11 +10,10 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_NAME,
   synchronize: true, 
   logging: true,
-  entities: [User], 
+  entities: [Alimentos], 
   migrations: ["src/migrations/*.ts"],
   subscribers: [],
 });
-
 export const connectDB = async()=>{
   try{
     await AppDataSource.initialize();

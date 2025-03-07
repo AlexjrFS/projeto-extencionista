@@ -1,16 +1,15 @@
 import "reflect-metadata"
 import express from "express";
-import { AppDataSource, connectDB } from "./database/database";
+import { AppDataSource, connectDB } from "./models/DataBase";
+import alimentosRouter from "./router/AlimentosRouter";
 
 const app = express();
+const port = 38000;
 app.use(express.json());
 
-connectDB();
-AppDataSource.initialize()
-.then(()=>{
-    console.log("Banco de dados cenectado!");
-    app.listen(3000, () => console.log("Servidor rodando na porta 3000"));
-})
-.catch((error)=>console.log("Erro ao conectar o banco: ", error));
-  
+app.use('/gula', alimentosRouter);
+app.listen(port,()=>{
+    console.log(`Servidor iniciado em http://localhost:${port}`);
+    AppDataSource.initialize().then(r => console.log('Banco de Dados iniciado'));
+});
 
