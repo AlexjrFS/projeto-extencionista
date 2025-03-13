@@ -3,7 +3,6 @@ import Alimentos from "../models/entities/Alimentos";
 import AlimentosRepository from "../models/entities/repository/AlimentosRepository";
 
 export default class AlimentosService{
-    
     private constructor(){
 
     }
