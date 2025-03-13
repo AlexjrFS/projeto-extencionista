@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import Alimentos from "../models/entities/Alimentos";
 import AlimentosService from "../service/AlimentosServices";
+import { string } from "zod";
 
 export default class AlimentoController{
     private static instance: AlimentoController; //criação de instacia referente ao propio controller
@@ -42,11 +43,11 @@ export default class AlimentoController{
     public async listAlimentosID(req: Request, res: Response): Promise<void>{//este também é uma listagem dos alimentos, porém mais especifico, mostrará referente ao id que voce enviar, podemos mudar para o nome tambem
         try{
           const alimentoService = AlimentosService.getInstance();
-          const id = req.params.id; //chamando o id do AlimentoServicem que vem do Alimentos(declaração das colunas da tabela)
-          if(!id){
+          const id_alimento = req.params.id_alimento; //chamando o id do AlimentoServicem que vem do Alimentos(declaração das colunas da tabela)
+          if(!id_alimento){
             res.status(400).json({err: "ID nao encontrado"});
           }
-          res.json(await alimentoService.listAlimentosID(parseInt(id))); //passagem de string para inteiro
+          res.json(await alimentoService.listAlimentosID(id_alimento)); 
         } 
         catch(err){
           console.log(err);
@@ -56,8 +57,8 @@ export default class AlimentoController{
     public async deleteAlimento(req:Request, res:Response): Promise<void>{//deletar um alimento especifico, de inicio manteremos por id pela praticidade
         try{
             const alimentoService = AlimentosService.getInstance();
-            const id = req.params.id;
-            await alimentoService.deleteAlimento(parseInt(id));
+            const id_alimento = req.params.id_alimento;
+            await alimentoService.deleteAlimento(id_alimento);
             res.json("Alimento deletado com sucesso");
         }
         catch(err){
@@ -68,9 +69,9 @@ export default class AlimentoController{
     public async updateAlimentos(req:Request, res:Response): Promise<void>{//alterar os descritivos do alimento especifico 
         try{
             const alimentoService = AlimentosService.getInstance();
-            const id = req.params.id;
+            const id_alimento = req.params.id_alimento;
             const alimento = req.body;
-            await alimentoService.updateAlimentos(parseInt(id), alimento);
+            await alimentoService.updateAlimentos((id_alimento), alimento);
             res.json("Alimento alterado com sucesso!");
         }
         catch(err){

@@ -1,8 +1,9 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
+
 @Entity("alimentos")
 class Alimentos{
-    @PrimaryGeneratedColumn()
-    id!: number;
+    @PrimaryGeneratedColumn("uuid")
+    id_alimento!: string;
     
     @Column("varchar", { length: 100 })
     name!: string;

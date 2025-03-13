@@ -1,6 +1,6 @@
 import "reflect-metadata"
 import express from "express";
-import { AppDataSource, connectDB } from "./models/DataBase";
+import { AppDataSource } from "./models/DataBase";
 import alimentosRouter from "./router/AlimentosRouter";
 
 const app = express();
