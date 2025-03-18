@@ -1,7 +1,5 @@
 import { Request, Response } from "express";
-import Alimentos from "../models/entities/Alimentos";
 import AlimentosService from "../service/AlimentosServices";
-import { string } from "zod";
 
 export default class AlimentoController{
     private static instance: AlimentoController; //criação de instacia referente ao propio controller
