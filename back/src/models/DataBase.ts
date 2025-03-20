@@ -2,6 +2,9 @@ import { DataSource } from "typeorm";
 import "dotenv/config";
 import Alimentos from "./entities/Alimentos";
 import Receitas from "./entities/Receita";
+import User from "./entities/User";
+import ReceitaIngredientes from "./entities/ReceitaIngredientes";
+
 export const AppDataSource = new DataSource({
   type: "mysql",
   host: process.env.DB_HOST,
@@ -11,7 +14,7 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_NAME,
   synchronize: true, 
   logging: true,
-  entities: [Alimentos, Receitas], 
+  entities: [Alimentos, Receitas, User, ReceitaIngredientes], 
   migrations: ["src/migrations/*.ts"],
   subscribers: [],
 });

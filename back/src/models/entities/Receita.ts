@@ -1,16 +1,16 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
-import Alimentos from "./Alimentos";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
+import ReceitaIngredientes from "./ReceitaIngredientes";
 
 @Entity("receitas")
-class Receitas{
+class Receitas {
     @PrimaryGeneratedColumn("uuid")
     id_receita!: string;
-
-    @ManyToOne(()=>Alimentos)
-    @JoinColumn({name:"id_alimento"})
-    id_alimento!: Alimentos;
     
     @Column("varchar", { length: 100 })
-    nome_receita!: string;
+    nome_receita!: string;  
+
+    @OneToMany(() => ReceitaIngredientes, receitaIngrediente => receitaIngrediente.receita)
+    ingredientes!: ReceitaIngredientes[];
 }
+
 export default Receitas;

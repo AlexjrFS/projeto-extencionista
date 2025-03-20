@@ -26,7 +26,7 @@ export default class AlimentoController{
         }
         catch(err){ //caso n de certo, retorna esse erro, (500) é o numero do erro que o computador retorna quando da errado o envio de requisição ao banco
             console.log(err);
-            res.status(500).json({err: "Não foi possivel criar aluno"});
+            res.status(500).json({err: "Não foi possivel criar o alimento"});
         }
     }
     public async listAlimentos(req:Request, res:Response): Promise<void>{ //listar os alimentos 
