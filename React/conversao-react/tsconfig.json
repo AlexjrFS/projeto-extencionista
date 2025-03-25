@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "Login_page/index.tsx", "Login_page/App.tsx"  ]
 }
