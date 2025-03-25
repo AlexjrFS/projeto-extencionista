@@ -11,17 +11,17 @@ body {
     display: flex;
     align-items: center;
     min-height: 100vh;
-    background: #ffffff;
+    background: white;
 }
 
 .navigation {
     position: relative;
     justify-content: left;
     height: 100vh;
-    background: #dad9d9;
+    background: #7e7b7b;
     width: 70px;
     box-shadow: 10px 0 0 #00f329;
-    border-left: 10px solid #dad9d9;
+    border-left: 10px solid #7e7e7e;
     overflow-x: hidden;
     transition: 0.5s;
 }
@@ -83,7 +83,7 @@ body {
     right: 0px;
     width: 30px;
     height: 30px;
-    background-color: #dad9d9;
+    background-color: #7e7b7b;
     border-radius: 50%;
     box-shadow: 15px 15px 0 #00f329;    
 }
@@ -94,8 +94,7 @@ body {
     right: 0px;
     width: 30px;
     height: 30px;
-    background-color: #dad9d9;
+    background-color: #7e7e7e;
     border-radius: 50%;
     box-shadow: 15px -15px 0 #00f329;    
 }
-
