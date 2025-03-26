@@ -7,7 +7,7 @@
     font-family: "Big Shoulders", sans-serif;
 }
 
-.body {
+body {
     display: flex;
     justify-content: center;
     align-items: center;
