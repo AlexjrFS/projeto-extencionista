@@ -186,7 +186,6 @@ export default function HomePage(){
                         </tr>
                         <tr>
                             <td>
-                                <Image src="assets/images.jfif">
                                 <p>Luangameplays</p>
                             </td>
                             <td>Luangameplays   </td>
@@ -194,7 +193,6 @@ export default function HomePage(){
                         </tr>
                         <tr>
                             <td>
-                                <Image src="assets/ferrari-logo-1-1.png">
                                 <p>Ferrari</p>
                             </td>
                             <td>1bilhaodecarne</td>
