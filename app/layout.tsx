@@ -10,7 +10,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Gula",
-  description: "",
+  description: "Gestão Unificada de Logística Alimentar",
 };
 
 export default function RootLayout({
@@ -19,8 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br">
-      <title>GULA</title>
+    <html lang="pt-BR">
+      <head>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
+      </head>
       <body className={`${poppins.variable} font-sans antialiased`}>
         {children}
       </body>
