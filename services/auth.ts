@@ -15,6 +15,7 @@ interface LoginResponse{
 interface ForgotPasswordResponse{
   message: string;
 }
+
 export const authService ={
   async login(user: string, password: string): Promise<LoginResponse>{
     try{
@@ -29,8 +30,14 @@ export const authService ={
       console.log('Resposta do servidor:', response.data);
 
       if(response.data.token){
+        // Salva no localStorage
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.user));
+        
+        // Salva em um cookie
+        document.cookie = `token=${response.data.token}; path=/`;
+        
+        // Configura o header de autorização
         axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
       }
       return response.data;
@@ -55,5 +62,11 @@ export const authService ={
   },
   getToken(){
     return localStorage.getItem('token') || sessionStorage.getItem('token');
+  },
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    document.cookie = 'token=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    delete axios.defaults.headers.common['Authorization'];
   }
 }; 

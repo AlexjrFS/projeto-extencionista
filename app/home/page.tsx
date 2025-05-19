@@ -3,41 +3,48 @@ import React, { useState } from "react"
 import Image from "next/image"
 import Salto from "../../public/salto.png"
 import Link from "next/link"
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import './home.css';
-
 export default function Home() {
   const [activeMenuItem, setActiveMenuItem] = useState('dashboard');
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   return (
-    <div className="container">
-      <aside className="sidebar">
+    <>
+        <div className="container">
+         <aside className="sidebar">
         <div className="logo">
           <Link href="/home">GULA</Link>
         </div>
         <ul className="menu">
           <li className={activeMenuItem === 'dashboard' ? 'active' : ''}>
-            <Link href="#" onClick={() => setActiveMenuItem('dashboard')}>
+            <Link href="/home" onClick={() => setActiveMenuItem('dashboard')}>
               <i className="bx bx-grid-alt"></i>
               <span>Dashboard</span>
             </Link>
           </li>
-          <li className={activeMenuItem === 'pedidos' ? 'active' : ''}>
-            <Link href="#" onClick={() => setActiveMenuItem('pedidos')}>
+          <li className={activeMenuItem === 'estoque' ? 'active' : ''}>
+            <Link href="#" onClick={() => setActiveMenuItem('estoque')}>
               <i className="bx bx-shopping-bag"></i>
-              <span>Pedidos</span>
+              <span>Estoque</span>
             </Link>
           </li>
-          <li className={activeMenuItem === 'cardapio' ? 'active' : ''}>
-            <Link href="#" onClick={() => setActiveMenuItem('cardapio')}>
-              <i className="bx bx-food-menu"></i>
-              <span>Cardápio</span>
+          <li className={activeMenuItem === 'graficos' ? 'active' : ''}>
+            <Link href="#" onClick={() => setActiveMenuItem('graficos')}>
+              <i className="bi bi-graph-up-arrow"></i>
+              <span>Gráficos</span>
+            </Link>
+          </li>
+          <li className={activeMenuItem === 'notificacoes' ? 'active' : ''}>
+            <Link href="#" onClick={() => setActiveMenuItem('notificacoes')}>
+              <i className="bx bx-message-dots"></i>
+              <span>Notificações</span>
             </Link>
           </li>
           <li className={activeMenuItem === 'sugestoes' ? 'active' : ''}>
             <Link href="#" onClick={() => setActiveMenuItem('sugestoes')}>
-              <i className="bx bx-message-dots"></i>
-              <span>Sugestões</span>
+              <i className="bi bi-question-circle"></i>
+              <span>Ajuda</span>
             </Link>
           </li>
           <li className={activeMenuItem === 'configuracoes' ? 'active' : ''}>
@@ -47,15 +54,15 @@ export default function Home() {
             </Link>
           </li>
           <li>
-            <Link href="#" className="logout">
+            <Link href="/" className="logout">
               <i className="bx bx-log-out" style={{ color: '#D32F2F' }}></i>
               <span style={{ color: '#D32F2F' }}>Logout</span>
             </Link>
           </li>
         </ul>
       </aside>
-
       <main className="content">
+
         <header>
           <div className="search-container">
             <input type="text" placeholder="Pesquisar..." />
@@ -64,18 +71,19 @@ export default function Home() {
             </button>
           </div>
           <div className="header-right">
-          <button
-  type="button"
-  className="theme-toggle"
-  onClick={() => setIsDarkMode(!isDarkMode)}
->
-  <i className={isDarkMode ? "bx bx-sun" : "bx bx-moon"}></i>
-</button>
+            <button
+              type="button"
+              className="theme-toggle"
+              onClick={() => setIsDarkMode(!isDarkMode)}
+            >
+              <i className={isDarkMode ? "bx bx-sun" : "bx bx-moon"}></i>
+            </button>
             <div className="profile">
               <Image src={Salto} alt="Profile" width={32} height={32} />
             </div>
           </div>
         </header>
+
 
         <section className="dashboard">
           <h1>Dashboard</h1>
@@ -151,6 +159,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-    </div>
-  );
+      </div>
+  </>);
 }
