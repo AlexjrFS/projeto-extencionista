@@ -47,6 +47,12 @@ export default function Home() {
               <span>Ajuda</span>
             </Link>
           </li>
+          <li className={activeMenuItem === 'notificacoes' ? 'active' : ''}>
+            <Link href="#" onClick={() => setActiveMenuItem('notificacoes')}>
+              <i className="bx bx-food-menu"></i>
+              <span>Notificações</span>
+            </Link>
+          </li>
           <li className={activeMenuItem === 'configuracoes' ? 'active' : ''}>
             <Link href="#" onClick={() => setActiveMenuItem('configuracoes')}>
               <i className="bx bx-cog"></i>
