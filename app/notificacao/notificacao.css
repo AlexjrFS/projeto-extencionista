@@ -1,21 +1,21 @@
 /* style.css */
 
-
 .notificacoes-container {
-  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .notificacoes-header-topo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  padding: 1rem 20px;
-  box-sizing: border-box;
   display: flex;
-  justify-content: space-between; /* Espaço entre título e ações */
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .notificacoes-titulo {
@@ -26,22 +26,24 @@
 
 .acoes-topo {
   display: flex;
-  gap: 0.5rem; /* Reduzindo o espaçamento entre os botões */
-  align-items: center;
-  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .acoes-topo button {
-  background-color: var(--cor-branco);
-  border: 1px solid var(--cor-borda);
-  padding: 0.4rem 0.7rem; /* Diminuindo o padding dos botões */
-  border-radius: 15px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  background: #f5f5f5;
+  color: #333;
   cursor: pointer;
-  font-size: 0.8rem; /* Diminuindo o tamanho da fonte dos botões */
   display: flex;
   align-items: center;
-  gap: 0.3rem;
-  white-space: nowrap;
+  gap: 5px;
+  transition: all 0.3s ease;
+}
+
+.acoes-topo button:hover {
+  background: #e0e0e0;
 }
 
 .acoes-topo button i {
@@ -50,34 +52,25 @@
 }
 
 .notificacoes-principal {
-  display: flex;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
-  padding-top: calc(
-    2rem + 60px
-  ); /* Ajustando o padding superior para a nova altura do header */
 }
 
 .notificacoes-esquerda {
-  flex: 1;
-  margin-top: 0; /* Removendo a margem superior anterior */
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .paginacao-container {
-  padding: 0.75rem 0;
-  background-color: var(--cor-branco);
-  font-size: 0.9rem;
-  color: var(--cor-texto-claro);
-  display: inline-flex; /* Alterado para inline-flex */
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-  border-radius: 4px; /* Adicionando bordas arredondadas */
-  padding-left: 1rem; /* Adicionando padding à esquerda */
-  padding-right: 1rem; /* Adicionando padding à direita */
-  outline: none !important; /* Tenta remover qualquer outline */
-  box-shadow: none !important; /* Tenta remover qualquer sombra */
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
 }
 
 .total-itens {
@@ -86,22 +79,19 @@
 
 .links-paginacao {
   display: flex;
-  align-items: center;
+  gap: 10px;
 }
 
 .links-paginacao a {
-  display: inline-block;
-  padding: 0.4rem 0.7rem;
-  border-radius: 4px;
+  color: #666;
   text-decoration: none;
-  color: var(--cor-azul-destaque);
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+  padding: 5px 10px;
+  border-radius: 4px;
 }
 
 .links-paginacao a.ativo {
-  color: var(--cor-verde-ativo);
-  font-weight: bold;
+  background: #1976d2;
+  color: #fff;
 }
 
 .links-paginacao span {
@@ -116,21 +106,27 @@
   margin: 0;
 }
 
-.lista-notificacoes li {
-  background-color: var(--cor-branco); /* Fundo branco para cada item */
-  border-top: 1px solid var(--cor-borda); /* Borda superior para separar */
-  padding: 0.8rem 1rem; /* Adicionar um pouco de padding interno */
-  display: flex; /* Usar flexbox para alinhar os elementos internos (data, esquerda, direita) */
-  justify-content: space-between; /* Espaço entre esquerda e direita */
-  align-items: flex-start; /* Alinhar os itens ao topo */
-  /* flex-direction: column; Remover para alinhar os blocos horizontalmente */
+.notificacao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.notificacao:last-child {
+  border-bottom: none;
 }
 
 .notificacao-esquerda {
-  display: flex; /* Alinhar ícone, texto e botão de ajustes horizontalmente */
-  align-items: center; /* Alinhar verticalmente ao centro */
-  margin-bottom: 0.4rem; /* Adicionar espaço abaixo da data */
-  /* justify-content: flex-start; Remover, o espaço será controlado pelo flex do li */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.notificacao-esquerda i {
+  font-size: 20px;
+  color: #1976d2;
 }
 
 .notificacao .data {
@@ -140,12 +136,6 @@
   margin-bottom: 0; /* Remover margem inferior */
   order: -1; /* Colocar a data acima dos outros elementos */
   align-self: flex-start; /* Alinhar a data à esquerda */
-}
-
-.notificacao-esquerda i {
-  margin-right: 0.8rem; /* Espaço entre ícone e texto */
-  color: var(--cor-principal-escura);
-  font-size: 1rem;
 }
 
 .notificacao .texto {
@@ -162,27 +152,17 @@
 }
 
 .notificacao-direita button {
-  background-color: var(--cor-branco); /* Usar a cor de fundo dos itens */
-  border: none; /* Remover a borda */
+  background: none;
+  border: none;
   cursor: pointer;
-  color: var(--cor-texto-claro);
-  font-size: 0.9rem;
-  padding: 0.2rem 0.4rem;
-  border-radius: 15px;
-  display: flex; /* Alinhar os ícones dentro do botão */
-  align-items: center;
-  gap: 0.3rem;
-}
-
-.notificacao-direita button i {
-  margin: 0;
+  color: #666;
 }
 
 .notificacao-detalhe {
-  flex: 0 0 45%;
-  background-color: var(--cor-branco);
-  border-radius: 4px;
-  padding: 1.2rem;
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .notificacao-detalhe h3 {
@@ -214,58 +194,38 @@
 }
 
 .notificacao-critica {
-  border-left: 5px solid green;
-  padding: 1.2rem;
-  border-radius: 8px;
-  margin-top: 1rem;
+  border-left: 4px solid #f44336;
 }
 
 .notificacao-critica h3 {
-  color: #000;
-  font-size: 1.4rem;
-  margin-bottom: 0.8rem;
+  color: #f44336;
+  margin-bottom: 15px;
 }
 
 .notificacao-critica ul {
-  padding-left: 1.5rem;
-  margin-bottom: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
 }
 
 .notificacao-critica li {
-  margin-bottom: 0.4rem;
-  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 .notificacao-critica i {
-  margin-right: 0.5rem;
-  color: #6c757d;
+  color: #666;
 }
 
 .link-relatorio {
-  color: var(--cor-azul-destaque);
+  display: inline-block;
+  margin-top: 15px;
+  color: #1976d2;
+  text-decoration: none;
+}
+
+.link-relatorio:hover {
   text-decoration: underline;
-  font-weight: bold;
-}
-
-.notificacao {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  padding: 16px;
-  margin: 12px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.notificacao:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.notificacao .data {
-  color: #888;
-  font-size: 0.9rem;
-  margin-bottom: 4px;
 }

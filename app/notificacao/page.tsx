@@ -1,21 +1,23 @@
 'use client'
-
 import React, { useState } from "react"
+// import 'bootstrap-icons/font/bootstrap-icons.css';
 import './notificacao.css';
-
+import Navbar from "../components/navbar";
 export default function Notificacao() {
 
 return (
     <>
+      <div className="container">
+        <Navbar />
     <div className="notificacoes-container">
       <header className="notificacoes-header-topo">
-        <h1 className="notificacoes-titulo">Notificações</h1>
+        {/* <h1 className="notificacoes-titulo">Notificações</h1> */}
         <div className="acoes-topo">
           <button className="marcar-tudo">
-            <i className="fas fa-eye"></i> Marcar Todas como lida
+            <i className="bi bi-eye"></i> Marcar Todas como lida
           </button>
           <button className="busca-avancada">
-            <i className="fas fa-search"></i> Busca Avançada
+            <i className="bi bi-search"></i> Busca Avançada
           </button>
           <button className="preferencias">
             <i className="fas fa-cog"></i> Preferências de Recebimento
@@ -38,7 +40,7 @@ return (
             <li className="notificacao">
               <span className="data">23 de Abril de 2025 às 09:49</span>
               <div className="notificacao-esquerda">
-                <i className="fas fa-eye"></i>
+                <i className="bi bi-eye"></i>
                 <div className="texto">Comunicador: você tem uma nova mensagem</div>
               </div>
               <div className="notificacao-direita">
@@ -51,7 +53,7 @@ return (
             <li className="notificacao">
               <span className="data">21 de Abril de 2025 às 17:02</span>
               <div className="notificacao-esquerda">
-                <i className="fas fa-bell"></i>
+                <i className="bi bi-bell-fill"></i>
                 <div className="texto">Comunicador: você tem uma nova mensagem</div>
               </div>
               <div className="notificacao-direita">
@@ -64,7 +66,7 @@ return (
             <li className="notificacao">
               <span className="data">21 de Abril de 2025 às 15:29</span>
               <div className="notificacao-esquerda">
-                <i className="fas fa-bell"></i>
+                <i className="bi bi-bell-fill"></i>
                 <div className="texto">Comunicador: você tem uma nova mensagem</div>
               </div>
               <div className="notificacao-direita">
@@ -135,7 +137,7 @@ return (
         </div>
       </main>
     </div>
-
+</div>
     </>
 )
 }
