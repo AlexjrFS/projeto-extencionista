@@ -20,7 +20,7 @@
 
 .notificacoes-titulo {
   color: #000;
-  font-size: 1.5rem; /* Diminuindo o tamanho do título */
+  font-size: 1.5rem; 
   margin: 0;
 }
 
@@ -228,4 +228,43 @@
 
 .link-relatorio:hover {
   text-decoration: underline;
+}
+
+.notificacoes-container,
+.notificacoes-esquerda,
+.notificacao-detalhe {
+  background: var(--light);
+  color: var(--dark);
+}
+
+.notificacao-critica h3 {
+  color: var(--danger);
+}
+
+a, .link-relatorio {
+  color: var(--primary);
+}
+
+.lista-notificacoes .notificacao {
+  border-bottom: 1px solid var(--grey);
+}
+
+/* Ajustar cor dos textos principais */
+.notificacoes-header-topo,
+.paginacao-container,
+.links-paginacao a,
+.notificacao .texto,
+.notificacao .data {
+  color: var(--dark);
+}
+
+/* Ajustar cor dos botões */
+.acoes-topo button {
+  background: var(--grey);
+  color: var(--dark);
+}
+
+.acoes-topo button:hover {
+  background: var(--light-primary);
+  color: var(--primary);
 }

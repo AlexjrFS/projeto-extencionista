@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
+:root {
+    --card-bg: #fff;
+}
+body.dark {
+    --card-bg: #23242a;
+}
 
 * {
     margin: 0;
@@ -15,6 +21,64 @@ body {
     align-items: center;
     min-height: 100vh;
     background-color: white;
+}
+
+body.dark,
+body.dark .container,
+body.dark .content,
+body.dark .notificacoes-container,
+body.dark .notificacoes-esquerda,
+body.dark .notificacao-detalhe,
+body.dark .config-section,
+body.dark .recent-orders,
+body.dark .stat-card,
+body.dark .search-container,
+body.dark .notificacoes-header-topo {
+  background: var(--card-bg) !important;
+  color: #fff !important;
+}
+
+body.dark th,
+body.dark td,
+body.dark .stat-info h3,
+body.dark .stat-info p,
+body.dark .dashboard h1,
+body.dark .section-header h2,
+body.dark .notificacao .texto,
+body.dark .notificacao .data,
+body.dark .notificacao-critica,
+body.dark .notificacao-critica * {
+  color: #fff !important;
+}
+
+body.dark .menu li a,
+body.dark .logo a,
+body.dark .logout a {
+  color: #fff !important;
+}
+
+body.dark .menu li.active a,
+body.dark .menu li a:hover {
+  background: var(--primary) !important;
+  color: #fff !important;
+}
+
+body.dark .notificacao-critica h3 {
+  color: var(--danger) !important;
+}
+
+body.dark .container,
+body.dark .content,
+body.dark .notificacoes-container,
+body.dark .notificacoes-esquerda,
+body.dark .notificacao-detalhe,
+body.dark .config-section,
+body.dark .recent-orders,
+body.dark .stat-card,
+body.dark .search-container,
+body.dark .notificacoes-header-topo {
+  border: 2px solid #388E3C !important;
+  box-shadow: 0 2px 12px 0 rgba(56, 142, 60, 0.15) !important;
 }
 
 .container-menu {
@@ -127,5 +191,18 @@ body {
 
 .register-box:hover {
     text-decoration: underline;
+}
+
+body.dark .container,
+body.dark .content,
+body.dark .notificacoes-container,
+body.dark .notificacoes-esquerda,
+body.dark .notificacao-detalhe,
+body.dark .config-section,
+body.dark .recent-orders,
+body.dark .stat-card,
+body.dark .search-container,
+body.dark .notificacoes-header-topo {
+  color: #fff !important;
 }
 
