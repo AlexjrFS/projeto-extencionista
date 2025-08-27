@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/AlexjrFS/projeto-extencionista#readme",
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.0",
     "@types/node": "^22.13.8",
     "@types/uuid": "^10.0.0",
@@ -27,7 +28,9 @@
   },
   "dependencies": {
     "@fastify/cors": "^11.0.0",
+    "@types/bcryptjs": "^2.4.6",
     "axios": "^1.8.1",
+    "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
