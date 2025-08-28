@@ -13,22 +13,32 @@ const ThemeContext = createContext<ThemeContextProps>({
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  // Verifica se estamos no cliente
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // Carrega preferência do localStorage ao iniciar
   useEffect(() => {
-    const saved = localStorage.getItem("darkMode");
-    if (saved === "true") setIsDarkMode(true);
-  }, []);
+    if (isClient) {
+      const saved = localStorage.getItem("darkMode");
+      if (saved === "true") setIsDarkMode(true);
+    }
+  }, [isClient]);
 
   // Aplica classe no body e salva preferência
   useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add("dark");
-    } else {
-      document.body.classList.remove("dark");
+    if (isClient) {
+      if (isDarkMode) {
+        document.body.classList.add("dark");
+      } else {
+        document.body.classList.remove("dark");
+      }
+      localStorage.setItem("darkMode", isDarkMode ? "true" : "false");
     }
-    localStorage.setItem("darkMode", isDarkMode ? "true" : "false");
-  }, [isDarkMode]);
+  }, [isDarkMode, isClient]);
 
   const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
 

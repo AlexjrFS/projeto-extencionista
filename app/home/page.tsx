@@ -1,23 +1,32 @@
 'use client'
-import React from "react"
+import React, { useEffect } from "react"
 import Image from "next/image"
 import Salto from "../../public/salto.png"
 import Link from "next/link"
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import './home.css';
 import Navbar from "../components/navbar"
+import './home.css'
 
 export default function Home() {
   const [activeMenuItem, setActiveMenuItem] = React.useState('dashboard');
 
+  // Log para debug
+  useEffect(() => {
+    console.log('Página Home carregada com sucesso');
+  }, []);
+
   return (
     <>
+    <div className="container">
       <Navbar />
-      <div className="container">
+      
         <main className="content">
           <header>
             <div className="search-container">
-              <input type="text" placeholder="Pesquisar..." />
+              <input 
+                type="text" 
+                placeholder="Pesquisar..." 
+              />
               <button type="button">
                 <i className="bx bx-search"></i>
               </button>
@@ -86,7 +95,9 @@ export default function Home() {
                       </div>
                     </td>
                     <td>01/04/2024</td>
-                    <td><span className="status completed">Concluído</span></td>
+                    <td>
+                      <span className="status completed">Concluído</span>
+                    </td>
                   </tr>
                   <tr>
                     <td>
@@ -96,7 +107,9 @@ export default function Home() {
                       </div>
                     </td>
                     <td>01/04/2024</td>
-                    <td><span className="status pending">Pendente</span></td>
+                    <td>
+                      <span className="status pending">Pendente</span>
+                    </td>
                   </tr>
                 </tbody>
               </table>

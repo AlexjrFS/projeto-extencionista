@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react"
 import { useRouter } from 'next/navigation'
 import { authService } from '../../services/auth'
 import 'bootstrap-icons/font/bootstrap-icons.css'
-import './navbar.css'
 
 export default function Navbar() {
   const [activeMenuItem, setActiveMenuItem] = useState('dashboard');
@@ -36,74 +35,91 @@ export default function Navbar() {
     
   return (
     <>
-      <button 
-        className="menu-toggle"
+      {/* <button 
+        className="menu-toggle fixed top-2.5 left-2.5 z-[1001] hidden bg-white border-none rounded p-2 shadow-md cursor-pointer md:hidden"
         onClick={() => setIsSidebarActive(!isSidebarActive)}
-        style={{
-          position: 'fixed',
-          top: '10px',
-          left: '10px',
-          zIndex: 1001,
-          display: 'none',
-          background: '#fff',
-          border: 'none',
-          borderRadius: '4px',
-          padding: '8px',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-          cursor: 'pointer'
-        }}
       >
         <i className="bx bx-menu"></i>
-      </button>
+      </button> */}
 
-      <aside className={`sidebar ${isSidebarActive ? 'active' : ''}`}>
-        <div className="logo">
-          <Link href="/home">GULA</Link>
+      <aside className={`sidebar fixed top-0 left-0 h-screen w-64 bg-white p-4 shadow-lg z-[1000] transition-all duration-300 ease-in-out md:w-16 md:p-2.5 md:hover:w-64 ${isSidebarActive ? 'w-64 p-4 translate-x-0' : 'md:translate-x-0'} ${isSidebarActive ? '' : 'md:translate-x-0'} ${isSidebarActive ? '' : 'max-md:w-0 max-md:p-0 max-md:-translate-x-full'}`}>
+        <div className="logo flex items-center justify-center py-4 mb-5 border-b border-gray-200">
+          <Link href="/home" className="text-2xl font-semibold text-green-600 no-underline md:text-0 md:first-letter:text-2xl">
+            GULA
+          </Link>
         </div>
-        <ul className="menu">
-          <li className={activeMenuItem === 'dashboard' ? 'active' : ''}>
-            <Link href="/home" onClick={() => setActiveMenuItem('dashboard')}>
-              <i className="bx bx-grid-alt"></i>
-              <span>Dashboard</span>
+        <ul className="menu list-none p-0 m-0 h-[calc(100vh-120px)] overflow-y-auto">
+          <li className={`mb-1 ${activeMenuItem === 'dashboard' ? 'active' : ''}`}>
+            <Link 
+              href="/home" 
+              onClick={() => setActiveMenuItem('dashboard')}
+              className={`flex items-center px-4 py-3 no-underline text-gray-800 rounded-lg transition-all duration-300 ease-in-out hover:bg-blue-50 hover:text-blue-600 ${activeMenuItem === 'dashboard' ? 'bg-blue-50 text-blue-600' : ''}`}
+            >
+              <i className="bx bx-grid-alt text-xl mr-2.5"></i>
+              <span className="text-base md:hidden md:group-hover:inline">Dashboard</span>
             </Link>
           </li>
-          <li className={activeMenuItem === 'estoque' ? 'active' : ''}>
-            <Link href="#" onClick={() => setActiveMenuItem('estoque')}>
-              <i className="bx bx-shopping-bag"></i>
-              <span>Estoque</span>
+          <li className={`mb-1 ${activeMenuItem === 'estoque' ? 'active' : ''}`}>
+            <Link 
+              href="#" 
+              onClick={() => setActiveMenuItem('estoque')}
+              className={`flex items-center px-4 py-3 no-underline text-gray-800 rounded-lg transition-all duration-300 ease-in-out hover:bg-blue-50 hover:text-blue-600 ${activeMenuItem === 'estoque' ? 'bg-blue-50 text-blue-600' : ''}`}
+            >
+              <i className="bx bx-shopping-bag text-xl mr-2.5"></i>
+              <span className="text-base md:hidden md:group-hover:inline">Estoque</span>
             </Link>
           </li>
-          <li className={activeMenuItem === 'graficos' ? 'active' : ''}>
-            <Link href="#" onClick={() => setActiveMenuItem('graficos')}>
-              <i className="bi bi-graph-up-arrow"></i>
-              <span>Gráficos</span>
+          <li className={`mb-1 ${activeMenuItem === 'graficos' ? 'active' : ''}`}>
+            <Link 
+              href="#" 
+              onClick={() => setActiveMenuItem('graficos')}
+              className={`flex items-center px-4 py-3 no-underline text-gray-800 rounded-lg transition-all duration-300 ease-in-out hover:bg-blue-50 hover:text-blue-600 ${activeMenuItem === 'graficos' ? 'bg-blue-50 text-blue-600' : ''}`}
+            >
+              <i className="bi bi-graph-up-arrow text-xl mr-2.5"></i>
+              <span className="text-base md:hidden md:group-hover:inline">Gráficos</span>
             </Link>
           </li>
-          <li className={activeMenuItem === 'notificacoes' ? 'active' : ''}>
-            <Link href="/notificacao" onClick={() => setActiveMenuItem('notificacoes')}>
-              <i className="bx bx-message-dots"></i>
-              <span>Notificações</span>
+          <li className={`mb-1 ${activeMenuItem === 'notificacoes' ? 'active' : ''}`}>
+            <Link 
+              href="/notificacao" 
+              onClick={() => setActiveMenuItem('notificacoes')}
+              className={`flex items-center px-4 py-3 no-underline text-gray-800 rounded-lg transition-all duration-300 ease-in-out hover:bg-blue-50 hover:text-blue-600 ${activeMenuItem === 'notificacoes' ? 'bg-blue-50 text-blue-600' : ''}`}
+            >
+              <i className="bx bx-message-dots text-xl mr-2.5"></i>
+              <span className="text-base md:hidden md:group-hover:inline">Notificações</span>
             </Link>
           </li>
-          <li className={activeMenuItem === 'sugestoes' ? 'active' : ''}>
-            <Link href="#" onClick={() => setActiveMenuItem('sugestoes')}>
-              <i className="bi bi-question-circle"></i>
-              <span>Ajuda</span>
+          <li className={`mb-1 ${activeMenuItem === 'sugestoes' ? 'active' : ''}`}>
+            <Link 
+              href="#" 
+              onClick={() => setActiveMenuItem('sugestoes')}
+              className={`flex items-center px-4 py-3 no-underline text-gray-800 rounded-lg transition-all duration-300 ease-in-out hover:bg-blue-50 hover:text-blue-600 ${activeMenuItem === 'sugestoes' ? 'bg-blue-50 text-blue-600' : ''}`}
+            >
+              <i className="bi bi-question-circle text-xl mr-2.5"></i>
+              <span className="text-base md:hidden md:group-hover:inline">Ajuda</span>
             </Link>
           </li>
-          <li className={activeMenuItem === 'configuracoes' ? 'active' : ''}>
-            <Link href="/configuracoes" onClick={() => setActiveMenuItem('configuracoes')}>
-              <i className="bx bx-cog"></i>
-              <span>Configurações</span>
+          <li className={`mb-1 ${activeMenuItem === 'configuracoes' ? 'active' : ''}`}>
+            <Link 
+              href="/configuracoes" 
+              onClick={() => setActiveMenuItem('configuracoes')}
+              className={`flex items-center px-4 py-3 no-underline text-gray-800 rounded-lg transition-all duration-300 ease-in-out hover:bg-blue-50 hover:text-blue-600 ${activeMenuItem === 'configuracoes' ? 'bg-blue-50 text-blue-600' : ''}`}
+            >
+              <i className="bx bx-cog text-xl mr-2.5"></i>
+              <span className="text-base md:hidden md:group-hover:inline">Configurações</span>
             </Link>
           </li>
-          <li className="logout">
-            <a href="#" onClick={(e) => {
-              e.preventDefault();
-              handleLogout();
-            }}>
-              <i className="bx bx-log-out"></i>
-              <span>Sair</span>
+          <li className="logout mt-auto border-t border-gray-200 pt-5">
+            <a 
+              href="#" 
+              onClick={(e) => {
+                e.preventDefault();
+                handleLogout();
+              }}
+              className="flex items-center px-4 py-3 no-underline text-red-600 rounded-lg transition-all duration-300 ease-in-out hover:bg-red-50"
+            >
+              <i className="bx bx-log-out text-xl mr-2.5"></i>
+              <span className="text-base md:hidden md:group-hover:inline">Sair</span>
             </a>
           </li>
         </ul>

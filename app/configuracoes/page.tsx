@@ -9,8 +9,9 @@ export default function Configuracoes() {
 
   return (
     <>
+    <div className="container">
       <Navbar />
-      <div className="container">
+      
         <main className="content">
           <h1>Configurações</h1>
           <section className="config-section">

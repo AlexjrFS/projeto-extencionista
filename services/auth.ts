@@ -4,11 +4,10 @@ axios.defaults.headers.common['Content-Type'] = 'application/json';
 axios.defaults.withCredentials = true;
 
 interface LoginResponse{
-  token: string;
+  message: string;
   user: {
     id: string;
-    name: string;
-    user: string;
+    username: string;
   };
 }
 
@@ -20,25 +19,32 @@ export const authService ={
   async login(user: string, password: string): Promise<LoginResponse>{
     try{
       console.log('Tentando login com:', { user, password: '***' });
-      console.log('URL da requisição:', `${API_URL}/auth/loginUser`);
+      console.log('URL da requisição:', `${API_URL}/gula/user/login`);
       console.log('Headers:', axios.defaults.headers);
       
-      const response = await axios.post(`${API_URL}/auth/loginUser`,{
+      const response = await axios.post(`${API_URL}/gula/user/login`,{
         user,
         password
       });
       console.log('Resposta do servidor:', response.data);
 
-      if(response.data.token){
-        // Salva no localStorage
-        localStorage.setItem('token', response.data.token);
+      // Como o servidor não retorna token, vamos criar um token baseado no ID do usuário
+      // ou usar uma sessão baseada em cookie
+      if(response.data.user && response.data.user.id){
+        // Salva os dados do usuário
         localStorage.setItem('user', JSON.stringify(response.data.user));
         
-        // Salva em um cookie
-        document.cookie = `token=${response.data.token}; path=/`;
+        // Cria um token simples baseado no ID do usuário (temporário)
+        const simpleToken = `user_${response.data.user.id}_${Date.now()}`;
+        localStorage.setItem('token', simpleToken);
+        
+        // Salva em um cookie com configurações adequadas
+        document.cookie = `token=${simpleToken}; path=/; max-age=86400; SameSite=Lax`;
         
         // Configura o header de autorização
-        axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
+        axios.defaults.headers.common['Authorization'] = `Bearer ${simpleToken}`;
+        
+        console.log('Dados do usuário salvos com sucesso');
       }
       return response.data;
     }

@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { authService } from '../services/auth';
 import Link from 'next/link';
@@ -28,6 +28,14 @@ export default function Login() {
     forgotPasswordEmail: '',
     forgotPasswordMessage: ''
   });
+
+  // Adiciona classe ao body para estilos específicos da página de login
+  useEffect(() => {
+    document.body.classList.add('login-page');
+    return () => {
+      document.body.classList.remove('login-page');
+    };
+  }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();

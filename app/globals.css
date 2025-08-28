@@ -15,7 +15,8 @@ body.dark {
     font-family: var(--font-poppins), sans-serif;
 }
 
-body {
+/* Estilos específicos para a página de login */
+body.login-page {
     display: flex;
     justify-content: center;
     align-items: center;

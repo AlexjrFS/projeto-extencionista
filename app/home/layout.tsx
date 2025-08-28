@@ -1,6 +1,8 @@
+import './home.css';
+
 export default function HomeLayout({children,} : {children: React.ReactNode}) {
     return (
-        <div>
+        <div className="home-layout">
             {children}
         </div>
     )

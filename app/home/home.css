@@ -15,6 +15,17 @@
     --light-success: #BBF7D0;
 }
 
+/* Estilos específicos para o layout da home */
+.home-layout {
+    min-height: 100vh;
+    background: var(--grey);
+}
+
+.home-layout body {
+    background: var(--grey);
+    overflow-x: hidden;
+}
+
 *{
     margin: 0;
     padding: 0;
